@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/basic.html</title>
+</head>
+<body>
+    <script> //''랑 "" 같음
+        var v1 = 'Hello, World'// global variable
+        v1 = 10;
+        v1 = true;
+        console.log(typeof v1); // 타입 상관없이 값 넣어줄수 있다.
+
+        v2 = 30;
+        console.log('v2: '+v2);
+
+        v3 = 20;
+        function f1() {
+            // var v3 = 40; //local variable
+            v3 = 50;
+            v4 = 90;
+            console.log('v3: '+v3);
+        }
+        f1();
+
+        var v3 = 25; //var : 변수 선언 했더라도 또 가능하다. 오류 날 가능성 있어서 잘안씀
+        console.log('v3 outer :' +v3);
+        console.log('v4 outer :' +v4);
+
+        let num1 = 10;
+
+        // let num1 = 20; // let : 변수 선언했으면 또 선언 불가능.
+        let num2 = 20;
+        num2 = "Hello";
+        console.log('num2 : '+num2);
+        
+        const num3 = 40; // const : 상수 -> 한번 값이 할당되면 다른값 넣을수 없다.
+        //num3 = 'Hello';
+        console.log('num3:'+num3);
+
+        const obj1 = {
+            name: 'Hong',
+            age: 20
+        }
+        obj1.name = 'Hwang'; //obj1 의 값을 바꾸는게 아니라 obj1의 필드의 값을 바꾸는것이므로 가능.
+        console.log(typeof obj1);
+        console.log(obj1.name);
+        console.log(obj1.age);
+
+        // obj1 = {
+        //     name: 'Hwang',
+        //     age: 25
+        // } // 상수로 선언했기때문에 에러남.
+
+        let num4 = null;
+        console.log(typeof num4); // object 변수 선언은 되어있지만 값이 없는 상태. null도 해당됨.
+
+        let num5 = []; //어떤 타입이든 다 올수 있기 때문에 배열 기호만 씀.
+        console.log(typeof num5);
+        num5[0] = 10;
+        num5[1] = 'Hello';
+        num5[2] = true;
+        //다른 타입도 가능하지만 웬만하면 한가지로 하기.
+
+        for(let i=0; i<num5.length; i++) {
+            console.log('log: '+num5[i]);
+        }
+
+        document.write('<h1>Hello, World</h1>'); // 크롬 왼쪽 화면에 출력.
+        const hong = {
+            firstName: 'kildong',
+            lastName: 'Hong',
+            age:20,
+            hobby: '독서'
+        }
+        document.write('<p>이름: '+hong.firstName +hong.lastName +'</p>');
+        document.write('<p>나이: '+ hong.age +'</p>');
+        document.write('<p>취미' + hong.hobby + '</p>'); 
+
+        document.write('<ul>');
+        document.write('<li>' +hong.firstName +hong.lastName + '</li>');
+        document.write('<li>'+ hong.age +'</li>');
+        document.write('<li>' + hong.hobby + '</li>'); 
+        document.write('</ul>');
+
+    </script>
+</body>
+</html>

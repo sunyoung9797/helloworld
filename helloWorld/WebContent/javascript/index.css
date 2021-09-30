@@ -1,0 +1,31 @@
+
+ul {
+    list-style-type: none;
+}
+
+li::before {
+    content: '- ';
+}
+
+.name {
+    display:  inline-block;
+    width: 70px;
+    background-color: yellow;
+}
+
+table>thead tr:nth-child(1){
+    background-color: grey;
+    color : yellow;
+}
+
+table>tbody tr:nth-child(2n+1) {
+    background-color: rgb(244, 248, 219);
+}
+
+td.pass {
+    color: blue;
+}
+
+td.fail {
+    color: red;
+}
