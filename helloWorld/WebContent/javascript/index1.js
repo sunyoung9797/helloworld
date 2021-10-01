@@ -18,26 +18,32 @@ const yun = {
 
 const persons = [choi, han, yun];
 
+function createTable() {
+    let tag = '<table border="1"><thead><tr><th>이름</th><th>나이</th><th>점수</th><th>합격여부</th></tr></thead>';
+    tag += '<tbody>';
+    for(let person of persons) {
+        // if(person.score>=60) {
+        //     tag += '<tr class="pass">';
+        // } else {
+        //     tag += '<tr class="fail">';
+        // }
+        // tag += '<tr>';
+        // for(let field in person) { // field 의 갯수 만큼.
+        //     tag += '<td>' + person[field] +'</td>';
+        // }
+        // if(person.score >= 60) {
+        //     tag += '<td class="pass">Pass</td>';
+        // } else {
+        //     tag += '<td class="fail">Fail</td>';
+        // }
+        // tag += '</tr>';
+        tag += createTr(person);
+    }
+    
+    tag = tag + '</tbody><table>';
+    document.write(tag);
 
-let tag = '<table border="1"><thead><tr><th>이름</th><th>나이</th><th>점수</th><th>합격여부</th></tr></thead>';
-tag += '<tbody>';
-for(let person of persons) {
-    if(person.score>=60) {
-        tag += '<tr class="pass">';
-    } else {
-        tag += '<tr class="fail">';
-    }
-    tag += '<tr>';
-    for(let field in person) { // field 의 갯수 만큼.
-        tag += '<td>' + person[field] +'</td>';
-    }
-    if(person.score >= 60) {
-        tag += '<td class="pass">Pass</td>';
-    } else {
-        tag += '<td class="fail">Fail</td>';
-    }
-    tag += '</tr>';
 }
-tag = tag + '</tbody><table>';
-document.write(tag);
+
+//  createTable();
 
