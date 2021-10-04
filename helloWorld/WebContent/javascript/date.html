@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/date.html</title>
+    <style>
+        *{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        table {
+            text-align: right;
+        }
+
+        tr>th {
+            background-color: rgb(197, 194, 194);
+        }
+
+        tbody>tr>td:nth-child(7n+1) {
+            background-color: rgb(248, 103, 103);
+            color: white;
+        }
+
+        tbody>tr>td:nth-child(7n) {
+            background-color: rgb(104, 139, 252);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        showCalendar(2021, 2);
+        showCalendar(2021, 5);
+        function showCalendar(year, month) {
+
+            const titles = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'fri', 'Sat'];
+            let today = new Date(year, month - 1, 1); // 2021,10,1
+            let lastDate = new Date(year, month, 0); // 10월의 마지막 날
+            let dayOfMonth = today.getDay();
+
+            // document.write('오늘의 년도 ' + today.getFullYear() + '<br>');
+            // document.write(today.getMonth() + 1 + '<br>'); // 월 0~11 : 0 -> 1월
+            // document.write(today.getDate() + '<br>');
+            // document.write(today.getDay() + '<br>'); // 요일 0~6 : 일~토
+
+            // document.write('이번달의 마지막날 ' + lastDate.getDate() + '<br>');
+
+            document.write(`${year}년 ${month}월 달력`);
+            document.write('<table border="1">');
+            document.write('<tr>');
+            //요일
+            for (let i = 0; i < titles.length; i++) {
+                document.write('<th>' + titles[i] + '</th>');
+            }
+            document.write('</tr><tr>');
+            //빈칸
+            for (let i = 0; i < dayOfMonth; i++) {
+                document.write('<td style = "background-color: white;"></td>');
+            }
+            //날짜
+            for (let i = 1; i <= lastDate.getDate(); i++) {
+                document.write('<td>' + i + '</td>');
+                if ((i + dayOfMonth) % 7 == 0) {
+                    document.write('</tr><tr>');
+                }
+            }
+            document.write('</tr>');
+            document.write('</table>');
+        }
+    </script>
+</body>
+
+</html>
+

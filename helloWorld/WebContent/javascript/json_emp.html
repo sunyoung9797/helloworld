@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/json_emp.html</title>
+    <style>
+        * {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        tr>th {
+            background-color: rgb(193, 250, 219);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let rawData = `{"employees":[{"id":1,"first_name":"Elset","last_name":"Hasted","email":"ehasted0@discovery.com","gender":"Non-binary","ip_address":"251.245.87.148"},
+{"id":2,"first_name":"Genvieve","last_name":"McGonagle","email":"gmcgonagle1@washington.edu","gender":"Genderqueer","ip_address":"134.52.160.252"},
+{"id":3,"first_name":"Teodor","last_name":"Giannazzi","email":"tgiannazzi2@harvard.edu","gender":"Non-binary","ip_address":"103.190.101.248"},
+{"id":4,"first_name":"Jolyn","last_name":"Haithwaite","email":"jhaithwaite3@zimbio.com","gender":"Bigender","ip_address":"48.254.9.35"},
+{"id":5,"first_name":"Melina","last_name":"Druhan","email":"mdruhan4@networkadvertising.org","gender":"Bigender","ip_address":"123.17.248.36"},
+{"id":6,"first_name":"Gavrielle","last_name":"Templeman","email":"gtempleman5@edublogs.org","gender":"Male","ip_address":"79.50.15.120"},
+{"id":7,"first_name":"Liam","last_name":"Munroe","email":"lmunroe6@joomla.org","gender":"Non-binary","ip_address":"57.215.217.29"},
+{"id":8,"first_name":"Yancey","last_name":"Furphy","email":"yfurphy7@jugem.jp","gender":"Bigender","ip_address":"61.27.28.245"},
+{"id":9,"first_name":"Siward","last_name":"Deeson","email":"sdeeson8@rediff.com","gender":"Agender","ip_address":"131.232.147.193"},
+{"id":10,"first_name":"Wildon","last_name":"Thoma","email":"wthoma9@dot.gov","gender":"Female","ip_address":"138.53.193.21"},
+{"id":11,"first_name":"Eamon","last_name":"Woods","email":"ewoodsa@ox.ac.uk","gender":"Male","ip_address":"230.218.207.96"},
+{"id":12,"first_name":"Lory","last_name":"Jeacop","email":"ljeacopb@google.com.br","gender":"Genderfluid","ip_address":"81.156.21.175"},
+{"id":13,"first_name":"Estell","last_name":"Godwin","email":"egodwinc@sun.com","gender":"Male","ip_address":"43.158.181.95"},
+{"id":14,"first_name":"Russell","last_name":"Bischoff","email":"rbischoffd@sphinn.com","gender":"Genderfluid","ip_address":"207.227.44.27"},
+{"id":15,"first_name":"Celine","last_name":"Cushion","email":"ccushione@sakura.ne.jp","gender":"Agender","ip_address":"223.237.208.178"}]}`;
+
+        //rawData => object
+        // let data = JSON.parse(rawData);
+        // console.log(data[0].id);
+        // console.log(data[0].first_name);
+        // console.log(data[0].last_name);
+        // console.log(data[0].email);
+        // console.log(data[0].gender);
+        // console.log(data[0].ip_address);
+
+        let obj = JSON.parse(rawData);
+        const employees = obj.employees;
+
+        document.write('<table border ="1">');
+        document.write('<tr><th>id</th><th>first_name</th><th>last_name</th><th>email</th><th>gender</th><th>ip_address</th><th>delete</th></tr>');
+        employees.forEach(function (obj, idx, ary){
+            document.write('<tr>');
+                for(let field in obj) {
+                document.write('<td>'+obj[field]+'</td>'); // json.html 참고해서 delete 버튼 넣기
+            }
+            document.write('</tr>');  
+
+        });
+        document.write('</table>');
+
+
+    </script>
+</body>
+
+</html>

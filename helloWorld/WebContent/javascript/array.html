@@ -7,12 +7,21 @@
     <title>javascript/array.html</title>
 </head>
 <body>
-    <input type="text" id ="inputValue">
+    <form action="">
+        <input type="text" id ="inputValue" value="test">
+    </form>
+    <p>test</p>
     <button id="btn" onclick="addArray()">추가하기</button>
     <button onclick="removeAry()">제거하기</button>
     <ul id="list">
     </ul>
     <script>
+
+        const fruits = ['apple', 'banana', 'cherry'];
+        const newFruits = fruits.slice(0,2);
+
+        console.log(newFruits);
+
         const inputAry = [];
         
         function showList() {
@@ -26,7 +35,17 @@
         }
 
         function removeAry() {
-            inputAry.shift();
+            // inputAry.shift(); // shift : 앞쪽부터  pop : 뒤쪽부터
+            // element의 값을 갖고 오도록
+            // let vi = document.getElementById('inputValue').value;
+            // let iv = document.getElementsByTagName('input')[0].value;
+            let iv = document.querySelector('form>input[type="text"]').value; //중요!
+            for(let i=0; i<inputAry.length; i++) {
+                if(inputAry[i] == iv) {
+                    inputAry.splice(i,1); // 삭제
+                    break;
+                }
+            }
             showList();
         }
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/array_iterable.html</title>
+</head>
+<body>
+    <script>
+        const numbers = [30, 25, 4, 100, 10];
+        let sum = 0;
+        numbers.forEach(function (obj, idx) { // 배열 안의 요소, 인덱스 값, 배열 그자체 (obj,idx,ary)
+            if(idx % 2 ==0) // 홀수번째 위치 값을 저장.
+            sum = sum + obj;
+        });
+        console.log(`합계: ${sum}`);
+
+        const names = ['한동일', '유상우', '정석진', '박준형'];
+        document.write('<ul>');
+        names.forEach(callBackFnc); //callBackFnc() 로 써버리면 바로 실행하라는 뜻이 되버려서 매개체로 쓰이지 못한다.
+        document.write('</ul>');
+
+        function callBackFnc(obj) {
+            document.write('<li>'+ obj + '</li>');
+        }
+
+        const persons = names.map(function (obj, idx, ary) {
+            const score = Math.floor(Math.random() * 100);
+            const persons = {
+                name: obj,
+                score: score
+            };
+            return person;
+        }); // mapping 
+        console.log(persons);
+
+        const person40 = persons.filter(function(obj, idx, ary) {
+            return obj.score > 40;
+        }); //filtering
+        console.log(person40);
+    </script>
+</body>
+</html>
