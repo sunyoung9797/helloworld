@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom/emp_html</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        div#show {
+            width: 60%;
+            float: left;
+        }
+
+        div#aside {
+            width: 28%;
+            float: left;
+            border: 2px dotted firebrick;
+            padding: 5px;
+        }
+
+        #aside label {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="show">
+
+    </div>
+
+    <div id="aside">
+        <div class="id"><label for="empId">ID</label><input type="text" id="empId"></div>
+        <div class="fname"><label for="empId">FName</label><input type="text" id="firstName"></div>
+        <div class="lname"><label for="empId">LName</label><input type="text" id="lastName"></div>
+        <div class="email"><label for="empId">Email</label><input type="text" id="email"></div>
+        <div class="gender"><label for="empId">Gender</label><input type="text" id="gender"></div>
+        <div class="address"><label for="empId">IP</label><input type="text" id="address"></div>
+        <div class="btn"> <button id="btn">변경</button><button id="btn2">삭제</button></div>
+    </div>
+
+    <script>
+
+        document.getElementById('btn').onclick = function () {
+            let empId = document.getElementById('empId').value;
+            let fname = document.getElementById('firstName').value;
+            console.log(empId);
+
+            let findTr = document.getElementById(empId);
+            console.log(findTr);
+
+            findTr.childNodes[1].firstChild.nodeValue = fnames;
+        }
+
+        document.getElementById('btn2').onclick = function () {
+            
+        }
+
+        let rawData =
+        `[{"id":1,"first_name":"Elset","last_name":"Hasted","email":"ehasted0@discovery.com","gender":"Non-binary","ip_address":"251.245.87.148"},
+{"id":2,"first_name":"Genvieve","last_name":"McGonagle","email":"gmcgonagle1@washington.edu","gender":"Genderqueer","ip_address":"134.52.160.252"},
+{"id":3,"first_name":"Teodor","last_name":"Giannazzi","email":"tgiannazzi2@harvard.edu","gender":"Non-binary","ip_address":"103.190.101.248"},
+{"id":4,"first_name":"Jolyn","last_name":"Haithwaite","email":"jhaithwaite3@zimbio.com","gender":"Bigender","ip_address":"48.254.9.35"},
+{"id":5,"first_name":"Melina","last_name":"Druhan","email":"mdruhan4@networkadvertising.org","gender":"Bigender","ip_address":"123.17.248.36"},
+{"id":15,"first_name":"Celine","last_name":"Cushion","email":"ccushione@sakura.ne.jp","gender":"Agender","ip_address":"223.237.208.178"}]`;
+        
+        let data = JSON.parse(rawData);
+
+        let table, tr, td, text;
+        table = document.createElement('table');
+        table.setAttribute('border', '1');
+        tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+
+        //title 부분
+        tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        for(let field in data[0]) {
+            td = document.createElement('th');
+            text = document.createTextNode(field.replace('_',' ').toUpperCase());
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+        //data 부분
+        for (let row of data) {
+            tr = document.createElement('tr');
+            tr.setAttribute('id',row.id);
+            tr.onmouseover = function () {
+                // console.log(this.childNodes[0].firstChild);
+                let empId = this.childNodes[0].firstChild.nodeValue;
+                let fname = this.childNodes[1].firstChild.nodeValue;
+                let lname = this.childNodes[2].firstChild.nodeValue;
+                let email = this.childNodes[3].firstChild.nodeValue;
+                let gender = this.childNodes[4].firstChild.nodeValue;
+                let address = this.childNodes[5].firstChild.nodeValue;
+
+                document.getElementById('empId').value = empId;
+                document.getElementById('firstName').value = fname;
+                document.getElementById('lastName').value = lname;
+                document.getElementById('email').value = email;
+                document.getElementById('gender').value = gender;
+                document.getElementById('address').value = address;
+
+            }
+            tbody.appendChild(tr);
+            for(let field in row) {
+                td = document.createElement('td');
+                text = document.createTextNode(row[field]);
+                td.appendChild(text);
+                tr.appendChild(td);
+            }
+        }
+
+        let show = document.getElementById('show');
+        show.appendChild(table);  
+    
+    </script>
+</body>
+
+</html>

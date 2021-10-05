@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/array.html</title>
+</head>
+<body>
+    <input type="text" id ="inputValue">
+    <button id="btn" onclick="addArray()">추가하기</button>
+    <button onclick="removeAry()">제거하기</button>
+    <ul id="list">
+    </ul>
+    <script>
+        const inputAry = [];
+
+        inputAry[2] = null; // a,b,c,d,e,f
+        inputAry.splice(3,1);
+        
+        function showList() {
+            //화면에 추가.
+            let ulTag = document.getElementById('list');
+            let tag = '';
+            for(let i=0; i<inputAry.length; i++) {
+                tag += '<li>' + inputAry[i] + '</li>';
+            }
+            ulTag.innerHTML = tag; //<ul><li>test</li><li>hello</li></ul>
+        }
+
+        function removeAry() {
+            inputAry.shift();
+            showList();
+        }
+
+        function addArray() {
+            let input = document.getElementById('inputValue');
+            let iValue = input.value;
+            // 배열추가.
+            // 0,null,"" => false
+            //20,-9, "  ","hello" => true
+
+            // 비정상적인 처리 => 메세지.
+            if(!iValue) {
+                alert('값을 입력하세요.');
+                return;
+            }
+            inputAry.unshift(iValue);
+            showList();
+            input.value = '';
+            input.focus();    
+            console.log(inputAry);
+        }
+    </script>
+</body>
+</html>
