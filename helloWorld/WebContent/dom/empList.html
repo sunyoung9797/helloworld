@@ -30,6 +30,7 @@
             직무: <input type="text" id="job" value="IT_PROG">
         </div>
         <button id="addBtn">등록</button>
+        <button id="addBtn">변경</button>
     </div>
     <div id="show"></div>
 
@@ -45,18 +46,23 @@
             let hire = document.getElementById('hire').value;
             let job = document.getElementById('job').value;
 
+            if(eId == "" || name == "" || email == "" || hire == "" || job =="") {
+            	window.alert("필수입력항목 확인!");
+            	return;
+            }
+            
             let param = 'id=' + eId + '&name=' + name + '&email=' + email + '&hire=' + hire + '&job=' + job;
             let xhtp = new XMLHttpRequest();
             xhtp.onload = function () {
             	let data = JSON.parse(xhtp.responseText);
             	// {id:?, name:?, email:?, }
+            	document.querySelector('#show>table').appendChild(tr);
             	let tr = document.createElement('tr');
+            	}
             	for (let field in data) {
             		let td = document.createElement('td');
             		td.appendChild(document.createTextNode(data[field]));
             		tr.appendChild(td);
-            	}
-            	document.querySelector('#show>table').appendChild(tr);
             }
             xhtp.open('post', '../AddEmpServlet');
             xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

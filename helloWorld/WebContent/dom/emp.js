@@ -35,7 +35,7 @@ function showEmpList(data) {
 
 		}
 	//삭제버튼
-	let btn = document.createElement('botton');
+	let btn = document.createElement('button');
 	btn.innerHTML = '삭제';
 	td = document.createElement('td');
 	td.appendChild(btn);
